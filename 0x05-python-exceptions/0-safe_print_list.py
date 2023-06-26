@@ -8,7 +8,7 @@ def safe_print_list(my_list=[], x=0):
         except:
             break
         else:
-            counter = counter + 1
+            counter += 1
 
     print()
     return (counter)
