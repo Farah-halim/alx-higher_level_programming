@@ -1,19 +1,11 @@
 #!/usr/bin/node
-
+// get request
 const request = require('request');
-const api = process.argv[2];
-
-request(api, (err, response, body) => {
+const url = process.argv[2];
+if (!url) process.exit();
+request.get(url, (error, response, body) => {
   if (!error) {
-    let number = 0;
-    const data = JSON.parse(body);
-    data.results.forEach(function (movies) {
-      movies.characters.forEach(function (character) {
-        if (character.search('/18/') !== -1) {
-          count++;
-        }
-      });
-    });
+    const count = body.split('/people/18/').length - 1;
     console.log(count);
   }
 });
